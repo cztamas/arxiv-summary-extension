@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Arxiv → Claude Settings</title>
+  <style>
+    body {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #1a1a1a;
+      line-height: 1.5;
+    }
+    
+    h1 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+    
+    .subtitle {
+      color: #666;
+      margin-bottom: 32px;
+    }
+    
+    label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    
+    .hint {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 12px;
+    }
+    
+    textarea {
+      width: 100%;
+      height: 200px;
+      padding: 12px;
+      font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      resize: vertical;
+      box-sizing: border-box;
+    }
+    
+    textarea:focus {
+      outline: none;
+      border-color: #d97706;
+      box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.1);
+    }
+    
+    .actions {
+      margin-top: 16px;
+      display: flex;
+      gap: 12px;
+    }
+    
+    button {
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    
+    button.primary {
+      background: #d97706;
+      color: white;
+    }
+    
+    button.primary:hover {
+      background: #b45309;
+    }
+    
+    button.secondary {
+      background: #e5e5e5;
+      color: #333;
+    }
+    
+    button.secondary:hover {
+      background: #d5d5d5;
+    }
+    
+    .saved-message {
+      display: none;
+      margin-top: 16px;
+      padding: 12px;
+      background: #e8f5e9;
+      border-radius: 6px;
+      color: #2e7d32;
+    }
+    
+    .variable-docs {
+      margin-top: 32px;
+      padding: 16px;
+      background: #f5f5f5;
+      border-radius: 6px;
+    }
+    
+    .variable-docs h3 {
+      margin: 0 0 12px 0;
+      font-size: 14px;
+    }
+    
+    .variable-docs code {
+      background: #e0e0e0;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <h1>⚙️ Arxiv → Claude Settings</h1>
+  <p class="subtitle">Customize the prompt that gets copied when you click the button.</p>
+  
+  <label for="promptTemplate">Prompt Template</label>
+  <p class="hint">Use <code>{url}</code> where you want the arxiv link to appear.</p>
+  <textarea id="promptTemplate"></textarea>
+  
+  <div class="actions">
+    <button id="save" class="primary">Save</button>
+    <button id="reset" class="secondary">Reset to Default</button>
+  </div>
+  
+  <div id="savedMessage" class="saved-message">
+    ✓ Settings saved!
+  </div>
+  
+  <div class="variable-docs">
+    <h3>Available Variables</h3>
+    <p><code>{url}</code> — The arxiv abstract page URL (e.g., https://arxiv.org/abs/2301.12345)</p>
+  </div>
+  
+  <script src="options.js"></script>
+</body>
+</html>
